@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        *{
+            
+        }
+    </style>
+</head>
+<body>
+    <h3>Check Weather At Your Spot</h3>
+    <label  for="longitude">Longitude: </label>
+    <input  id="long" type="text"><br><br>
+    <label  for="latitude">Latitude: </label>
+    <input id="lat" type="text"><br><br>
+    <p id="out">the result will load here</p>
+    <button id="btn" onClick="getWeather()">Check Weather </button>
+    <script>
+        async function getWeather(){
+            const latitude=parseFloat(document.getElementById('lat').value);
+            const longitude=parseFloat(document.getElementById('long').value);
+            document.getElementById('out').innerHTML='loading.....'
+            let url="https://api.open-meteo.com/v1/forecast?latitude="+latitude+"&longitude="+longitude+"&current_weather=true";
+            let value=await fetch(url);
+            let data=await value.json();
+            let temp=data.current_weather.temperature;
+            let unit=data.current_weather_units.temperature;
+            document.getElementById('out').innerHTML="current weather: "+ temp+" "+unit;
+                }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Nominal</title>
+</head>
+<body>
+    <h6 id="output"></h6>
+   <button onclick="getWeather()">Get Data</button>
+   <script>
+        function getWeather(){
+            const longitude=17.385;
+            const latitude=78.4867;
+            let url="https://api.open-meteo.com/v1/forecast?latitude="+latitude+"&longitude="+longitude+"&current_weather=true";
+            fetch(url)
+            .then(response=>response.json())
+            .then(data=>
+                (document.getElementById('output').textContent=JSON.stringify(data,null,5)));
+         }
+   </script>
+</body>
+</html>

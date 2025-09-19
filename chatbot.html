@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+</head>
+<body>
+    <h1>Ask Me A Question</h1><br>
+    <textarea id="query" placeholder="what are the job roles of computer science students?"></textarea><br>
+    <button id="go" onClick="answerQuestion()">Go</button>
+    <script>
+        function answerQuestion(){
+            const question=document.getElementById('query').value;
+            document.getElementById('query')='Searching for result....';
+        }
+    </script>
+</body>
+</html>
